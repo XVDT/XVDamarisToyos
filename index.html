@@ -1,31 +1,321 @@
-<audio id="background-music" loop>
-        <source src="audiopagina.mp3" type="audio/mpeg">
-        Tu navegador no soporta el elemento de audio.
-    </audio>
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>XV Damaris Toyos - Elite Edition</title>
+    <link href="https://fonts.googleapis.com/css2?family=Alex+Brush&family=Montserrat:wght@200;300;400;600&family=Cinzel:wght@400;700&display=swap" rel="stylesheet">
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+    
+    <style>
+        :root {
+            --blush: #f4cfdf; 
+            --charcoal: #121212; 
+            --gold: #d4af37; 
+            --gold-light: #f1e5ac;
+            --pink: #ff85a1; 
+            --white: #ffffff;
+            --cream: #fafafa;
+        }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        
+        body { 
+            font-family: 'Montserrat', sans-serif; 
+            background: var(--white); 
+            overflow-x: hidden; 
+            color: #2c2c2c; 
+            scroll-behavior: smooth;
+        }
+
+        /* --- PORTADA --- */
+        .hero {
+            height: 100vh;
+            background: linear-gradient(rgba(0,0,0,0.2), rgba(0,0,0,0.4)), url('inicio.png') no-repeat center center;
+            background-size: cover;
+            display: flex; 
+            flex-direction: column; 
+            justify-content: center; 
+            align-items: center;
+            color: white; 
+            text-align: center;
+            position: relative;
+        }
+
+        .hero::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            width: 100%;
+            height: 150px;
+            background: linear-gradient(transparent, var(--white));
+        }
+
+        .hero h1 { 
+            font-family: 'Alex Brush', cursive; 
+            font-size: clamp(4rem, 15vw, 8rem); 
+            text-shadow: 0 10px 30px rgba(0,0,0,0.3); 
+            margin: 10px 0;
+        }
+
+        .hero p {
+            font-size: 1rem;
+            letter-spacing: 6px;
+            text-transform: uppercase;
+            font-weight: 300;
+        }
+
+        /* --- SECCIÓN DE BENDICIÓN --- */
+        .blessing-section {
+            padding: 100px 20px;
+            background: var(--white);
+            text-align: center;
+        }
+
+        .blessing-text {
+            font-family: 'Alex Brush', cursive;
+            font-size: clamp(2rem, 5vw, 3rem);
+            color: #c48295;
+            line-height: 1.3;
+            max-width: 850px;
+            margin: auto;
+        }
+
+        /* --- PADRES Y PADRINOS (MODERNO) --- */
+        .family-section {
+            padding: 120px 20px;
+            background: linear-gradient(180deg, var(--white) 0%, var(--soft-pink) 100%);
+            background-color: #fdf8fa;
+        }
+
+        .family-container {
+            display: flex;
+            justify-content: center;
+            gap: 40px;
+            max-width: 1100px;
+            margin: 0 auto;
+            flex-wrap: wrap;
+        }
+
+        .family-card {
+            flex: 1;
+            min-width: 300px;
+            padding: 50px 30px;
+            background: white;
+            border-radius: 5px; /* Bordes rectos para un look más arquitectónico/moderno */
+            box-shadow: 0 20px 40px rgba(0,0,0,0.03);
+            border-top: 4px solid var(--gold);
+            transition: transform 0.3s ease;
+        }
+
+        .family-card:hover {
+            transform: translateY(-10px);
+        }
+
+        .family-card h2 {
+            font-family: 'Cinzel', serif;
+            color: var(--charcoal);
+            font-size: 1.5rem;
+            margin-bottom: 25px;
+            letter-spacing: 3px;
+        }
+
+        .family-card p {
+            font-size: 1rem;
+            font-weight: 400;
+            line-height: 2.2;
+            color: #666;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+        }
+
+        /* --- SECCIONES DIAGONALES --- */
+        .split-section {
+            display: flex; 
+            min-height: 80vh; 
+            background: var(--charcoal); 
+            color: white;
+            align-items: center; 
+            overflow: hidden;
+            flex-wrap: wrap;
+        }
+
+        .content-side { 
+            flex: 1; 
+            padding: 10% 8%; 
+            z-index: 2; 
+            min-width: 350px;
+        }
+        
+        .title-gold { 
+            font-family: 'Cinzel'; 
+            color: var(--gold); 
+            margin-bottom: 25px; 
+            font-size: 2.5rem; 
+            letter-spacing: 2px;
+        }
+
+        .image-side-left {
+            flex: 1.3; 
+            min-height: 80vh;
+            background: url('emergente1.png') no-repeat center center;
+            background-size: cover;
+            clip-path: polygon(0 0, 100% 0, 85% 100%, 0% 100%);
+        }
+
+        .image-side-right {
+            flex: 1.3; 
+            min-height: 80vh;
+            background: url('emergente2.png') no-repeat center center;
+            background-size: cover;
+            clip-path: polygon(15% 0, 100% 0, 100% 100%, 0% 100%);
+        }
+
+        /* --- BOTONES --- */
+        .btn-luxury {
+            display: inline-block; 
+            padding: 18px 45px; 
+            margin-top: 30px;
+            border: 1px solid var(--gold); 
+            color: var(--gold); 
+            text-decoration: none;
+            border-radius: 0; /* Moderno y minimalista */
+            background: transparent;
+            transition: all 0.4s ease; 
+            font-weight: 600;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            font-size: 0.8rem;
+        }
+
+        .btn-luxury:hover { 
+            background: var(--gold); 
+            color: white; 
+            box-shadow: 0 10px 20px rgba(212, 175, 55, 0.2);
+        }
+
+        /* --- REGALO --- */
+        .gift-section {
+            padding: 120px 20px;
+            background: var(--cream);
+        }
+
+        .gift-card {
+            border: 1px solid #eee;
+            padding: 60px 30px; 
+            max-width: 800px; 
+            margin: auto;
+            text-align: center;
+            background: white;
+            position: relative;
+        }
+
+        .gift-card::before {
+            content: "✉";
+            font-size: 2rem;
+            color: var(--gold);
+            display: block;
+            margin-bottom: 15px;
+        }
+
+        /* --- CIERRE --- */
+        .footer-hero {
+            height: 100vh;
+            background: linear-gradient(rgba(0,0,0,0.2), rgba(0,0,0,0.2)), url('final.png') no-repeat center center;
+            background-size: cover;
+            display: flex; 
+            justify-content: center; 
+            align-items: center;
+            color: white; 
+            font-family: 'Alex Brush', cursive; 
+            font-size: clamp(3.5rem, 12vw, 6rem);
+            text-shadow: 0 5px 20px rgba(0,0,0,0.4);
+        }
+
+        #petals { 
+            position: fixed; 
+            top: 0; left: 0; width: 100%; height: 100%;
+            pointer-events: none; z-index: 100; 
+        }
+
+        @media (max-width: 900px) {
+            .split-section { flex-direction: column !important; }
+            .image-side-left, .image-side-right { 
+                clip-path: none; 
+                width: 100%; 
+                min-height: 60vh; 
+            }
+            .content-side { text-align: center; padding: 60px 25px; }
+            .family-card { min-width: 100%; }
+        }
+    </style>
+</head>
+<body>
+
+    <div id="petals"></div>
+
+    <header class="hero">
+        <p data-aos="fade-up" data-aos-delay="200">Mis Quince Años</p>
+        <h1 data-aos="zoom-in" data-aos-duration="2000">Damaris Toyos</h1>
+        <p data-aos="fade-up" data-aos-delay="400">06 • JUNIO • 2026</p>
+    </header>
+
+    <section class="blessing-section">
+        <div class="blessing-text" data-aos="fade-up">
+            Con la bendición de Dios y el amor de su familia, te invitamos a celebrar los XV años de nuestra hija
+        </div>
+    </section>
+
+    <section class="family-section">
+        <div class="family-container">
+            <div class="family-card" data-aos="fade-up" data-aos-delay="100">
+                <h2>Mis Padres</h2>
+                <p>Jessica Toyos</p>
+                <p>Francisco Toyos</p>
+            </div>
+            <div class="family-card" data-aos="fade-up" data-aos-delay="300">
+                <h2>Mis Padrinos</h2>
+                <p>Rosy Toyos</p>
+                <p>Eduardo Toyos</p>
+            </div>
+        </div>
+    </section>
+
+    <section class="split-section">
+        <div class="image-side-left" data-aos="fade-right"></div>
+        <div class="content-side" data-aos="fade-left">
+            <h2 class="title-gold">La Ceremonia</h2>
+            <p style="letter-spacing: 2px; font-weight: 300; margin-bottom: 10px;">ST. MONICA ROMAN CATHOLIC PARISH</p>
+            <p style="color: #bbb;">12:00 PM | 212 W Medina Rd, Tucson, AZ</p>
+            <a href="https://www.google.com.mx/maps/place/Saint+Monica+Roman+Catholic+Parish+Church/@32.1306632,-110.9749989,17z/data=!4m6!3m5!1s0x86d67bb6794d9493:0x70e9adf1de4d99de!8m2!3d32.1306587!4d-110.972424!16s%2Fg%2F1tf7y4v2?entry=ttu&g_ep=EgoyMDI2MDQwOC4wIKXMDSoASAFQAw%3D%3D" class="btn-luxury" target="_blank">Ver Ubicación</a>
+        </div>
+    </section>
+
+    <section class="split-section" style="flex-direction: row-reverse; background: #080808;">
+        <div class="image-side-right" data-aos="fade-left"></div>
+        <div class="content-side" data-aos="fade-right">
+            <h2 class="title-gold">La Recepción</h2>
+            <p style="letter-spacing: 2px; font-weight: 300; margin-bottom: 10px;">SALÓN PARTY PLACE</p>
+            <p style="color: #bbb;">07:00 PM | 4547 S 6th Ave, Tucson, AZ</p>
+            <a href="https://www.google.com.mx/maps/place/Party+Place+Tucson+Salon+de+Eventos/@32.1691938,-110.9682119,17z/data=!4m14!1m7!3m6!1s0x86d67a6e0347b6d1:0xd58c6d2d511b3986!2sParty+Place+Tucson+Salon+de+Eventos!8m2!3d32.1691957!4d-110.9679322!16s%2Fg%2F11c2ns9r8w!3m5!1s0x86d67a6e0347b6d1:0xd58c6d2d511b3986!8m2!3d32.1691957!4d-110.9679322!16s%2Fg%2F11c2ns9r8w?entry=ttu" class="btn-luxury" target="_blank">Ver Ubicación</a>
+        </div>
+    </section>
+
+    <section class="gift-section">
+        <div class="gift-card" data-aos="zoom-in">
+            <h2 class="title-gold" style="color: var(--charcoal); font-size: 1.8rem;">Lluvia de Sobres</h2>
+            <p style="line-height: 2; color: #666; max-width: 500px; margin: auto;">Tu presencia es mi mejor regalo, pero si deseas obsequiarme algo, contaremos con un cofre para sobres en el salón.</p>
+        </div>
+    </section>
+
+    <div class="footer-hero">
+        <div data-aos="fade-up" data-aos-duration="2500">Es un honor contar con su presencia en un dia tan especial.</div>
+    </div>
 
     <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
     <script>
         AOS.init({ duration: 1000, once: true });
 
-        // --- LÓGICA DE AUDIO ---
-        const music = document.getElementById('background-music');
-
-        // Función para intentar reproducir
-        function playMusic() {
-            music.play().then(() => {
-                // Si tiene éxito, eliminamos los escuchadores para que no se repita el intento
-                document.removeEventListener('click', playMusic);
-                document.removeEventListener('touchstart', playMusic);
-            }).catch(error => {
-                console.log("El navegador bloqueó el autoplay. Esperando interacción...");
-            });
-        }
-
-        // Escuchar el primer clic o toque del usuario para iniciar la música
-        document.addEventListener('click', playMusic);
-        document.addEventListener('touchstart', playMusic);
-
-        // --- LÓGICA DE PÉTALOS ---
         function createPetal() {
             const petalsContainer = document.getElementById('petals');
             const p = document.createElement('div');
@@ -50,3 +340,4 @@
         setInterval(createPetal, 500);
     </script>
 </body>
+</html>
