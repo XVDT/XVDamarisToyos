@@ -53,6 +53,31 @@
             letter-spacing: 2px;
         }
 
+        /* --- CONTROL DE AUDIO --- */
+        .music-control {
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
+            z-index: 1000;
+        }
+
+        .btn-music {
+            width: 55px;
+            height: 55px;
+            border-radius: 50%;
+            background: var(--white);
+            border: 2px solid var(--silver);
+            color: var(--silver-dark);
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+            transition: all 0.3s ease;
+        }
+
+        .btn-music:hover { transform: scale(1.1); background: var(--silver-light); }
+
         /* --- SECCIÓN DE BENDICIÓN --- */
         .blessing-section {
             padding: 100px 20px;
@@ -131,7 +156,6 @@
             font-size: 5rem; 
         }
 
-        /* --- DIRECCIONES (FUENTE LEGIBLE) --- */
         .address-container {
             font-family: 'Montserrat', sans-serif;
             text-transform: uppercase;
@@ -168,7 +192,6 @@
             border-left: 4px solid var(--silver);
         }
 
-        /* --- BOTONES PLATEADOS --- */
         .btn-luxury {
             display: inline-block; 
             padding: 15px 40px; 
@@ -185,12 +208,8 @@
             border-radius: 50px;
         }
 
-        .btn-luxury:hover { 
-            background: var(--silver); 
-            color: white; 
-        }
+        .btn-luxury:hover { background: var(--silver); color: white; }
 
-        /* --- REGALO --- */
         .gift-section {
             padding: 100px 20px;
             background: #fafafa;
@@ -212,7 +231,6 @@
             line-height: 1.2;
         }
 
-        /* --- CIERRE --- */
         .footer-hero {
             height: 80vh;
             background: linear-gradient(rgba(0,0,0,0.1), rgba(0,0,0,0.2)), url('final.png') no-repeat center center;
@@ -243,6 +261,14 @@
     <audio id="bgAudio" loop>
         <source src="audiopagina.mpeg" type="audio/mpeg">
     </audio>
+
+    <div class="music-control">
+        <button class="btn-music" id="musicBtn" onclick="toggleAudio()">
+            <svg id="musicIcon" viewBox="0 0 24 24" width="24" height="24">
+                <path fill="currentColor" d="M8 5v14l11-7z"/>
+            </svg>
+        </button>
+    </div>
 
     <header class="hero">
         <p data-aos="fade-up">Mis Quince Años</p>
@@ -310,9 +336,24 @@
     <script>
         AOS.init({ duration: 1000, once: true });
 
+        // SCRIPT DE AUDIO RESTAURADO
+        const audio = document.getElementById('bgAudio');
+        const musicIcon = document.getElementById('musicIcon');
+
+        function toggleAudio() {
+            if (audio.paused) {
+                audio.play();
+                musicIcon.innerHTML = '<path fill="currentColor" d="M6 19h4V5H6v14zm8-14v14h4V5h-4z"/>'; 
+            } else {
+                audio.pause();
+                musicIcon.innerHTML = '<path fill="currentColor" d="M8 5v14l11-7z"/>'; 
+            }
+        }
+
         function createPetal() {
             const petalsContainer = document.getElementById('petals');
             const p = document.createElement('div');
+            // Moños y flores de vuelta
             p.innerHTML = Math.random() > 0.5 ? "🌸" : "🎀";
             const duration = Math.random() * 5 + 7;
             
