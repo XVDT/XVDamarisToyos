@@ -3,262 +3,121 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>XV Damaris Toyos - Edición Diamant</title>
-    <link href="https://fonts.googleapis.com/css2?family=Alex+Brush&family=Montserrat:wght@200;300;400;600&family=Cinzel:wght@400;700&display=swap" rel="stylesheet">
+    <title>XV Damaris Toyos - Diamond Luxury</title>
+    <link href="https://fonts.googleapis.com/css2?family=Alex+Brush&family=Montserrat:wght@200;400;600&family=Cinzel:wght@400;700&display=swap" rel="stylesheet">
     <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
     
     <style>
         :root {
-            --blush: #fef5f8;
-            --pink-main: #ff6b91;
-            --pink-dark: #c45b77;
-            --silver: #c0c0c0;
-            --silver-light: #e8e8e8;
-            --silver-dark: #7a7a7a;
+            --pink-deep: #ff6b91;
+            --pink-soft: #fef5f8;
+            --silver-chrome: #c0c0c0;
+            --silver-light: #f2f2f2;
             --white: #ffffff;
+            --text-gray: #4a4a4a;
         }
 
         * { margin: 0; padding: 0; box-sizing: border-box; }
-        
-        body { 
-            font-family: 'Montserrat', sans-serif; 
-            background: var(--white); 
-            overflow-x: hidden; 
-            color: #333; 
-            scroll-behavior: smooth;
-        }
+        body { font-family: 'Montserrat', sans-serif; background: var(--white); overflow-x: hidden; color: var(--text-gray); }
 
-        /* --- BOTÓN DE MÚSICA --- */
-        .music-control {
-            position: fixed;
-            bottom: 20px;
-            right: 20px;
-            z-index: 9999;
-        }
-
+        /* --- BOTÓN MÚSICA --- */
+        .music-control { position: fixed; top: 20px; right: 20px; z-index: 10000; }
         .btn-music {
-            width: 55px;
-            height: 55px;
-            border-radius: 50%;
-            background: rgba(255, 255, 255, 0.9);
-            border: 1px solid var(--silver);
-            color: var(--pink-main);
-            cursor: pointer;
-            display: flex;
-            align-items: center;
-            justify-content: center;
+            width: 50px; height: 50px; border-radius: 50%; background: white;
+            border: 1px solid var(--silver-chrome); color: var(--pink-deep);
+            cursor: pointer; display: flex; align-items: center; justify-content: center;
             box-shadow: 0 5px 15px rgba(0,0,0,0.1);
-            backdrop-filter: blur(5px);
         }
 
-        /* --- PORTADA ESTILO DIAMANT --- */
+        /* --- PORTADA --- */
         .hero {
             height: 100vh;
             background: url('inicio.png') no-repeat center center;
             background-size: cover;
-            display: flex; 
-            flex-direction: column; 
-            justify-content: center; 
-            align-items: center;
-            text-align: center;
-            padding: 20px;
+            display: flex; flex-direction: column; justify-content: center; align-items: center;
+            text-align: center; position: relative;
         }
-
         .hero h1 { 
-            font-family: 'Alex Brush', cursive; 
-            font-size: clamp(4rem, 18vw, 8.5rem); 
-            color: var(--white);
-            text-shadow: 0 5px 20px rgba(0,0,0,0.6);
-            margin: 10px 0;
+            font-family: 'Alex Brush', cursive; font-size: clamp(4.5rem, 18vw, 9rem); 
+            color: white; text-shadow: 0 10px 30px rgba(0,0,0,0.4);
+        }
+        .hero p { font-size: 1rem; letter-spacing: 8px; color: white; text-transform: uppercase; font-weight: 200; }
+
+        /* --- SECCIÓN CREATIVA (SUPERPOSICIÓN) --- */
+        .overlap-container {
+            padding: 100px 20px; position: relative;
+            background: linear-gradient(to bottom, #fff, var(--pink-soft));
         }
 
-        .hero p {
-            font-size: clamp(0.9rem, 4vw, 1.2rem);
-            letter-spacing: 5px;
-            text-transform: uppercase;
-            color: var(--white);
-            text-shadow: 0 2px 10px rgba(0,0,0,0.6);
-            font-weight: 300;
+        .floating-frame {
+            max-width: 900px; margin: auto; padding: 80px 40px;
+            border: 1px solid var(--silver-chrome); background: white;
+            position: relative; box-shadow: 0 20px 50px rgba(0,0,0,0.05);
+            z-index: 2;
         }
 
-        /* --- CONTENEDORES CON MARCO --- */
-        .framed-section {
-            margin: 40px 20px;
-            padding: 60px 25px;
-            border: 1px solid var(--silver);
-            position: relative;
-            background: var(--white);
-            text-align: center;
+        .floating-frame::before {
+            content: ''; position: absolute; top: -15px; left: -15px; right: -15px; bottom: -15px;
+            border: 1px solid var(--pink-soft); z-index: -1;
         }
 
-        .framed-section::after {
-            content: '';
-            position: absolute;
-            top: 8px; left: 8px; right: 8px; bottom: 8px;
-            border: 1px solid var(--blush);
-            pointer-events: none;
-        }
+        .blessing { font-family: 'Alex Brush', cursive; font-size: clamp(2.5rem, 6vw, 3.8rem); color: var(--pink-deep); margin-bottom: 40px; }
 
-        .blessing-text {
-            font-family: 'Alex Brush', cursive;
-            font-size: clamp(2.2rem, 6vw, 3.5rem);
-            color: var(--pink-main);
-            line-height: 1.2;
-        }
+        .family-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; margin-top: 30px; }
+        .family-item h3 { font-family: 'Cinzel'; font-size: 0.9rem; letter-spacing: 3px; color: var(--silver-chrome); }
+        .family-item p { font-family: 'Alex Brush'; font-size: 2.2rem; color: var(--text-gray); }
 
-        /* --- FAMILIA --- */
-        .family-title {
-            font-family: 'Cinzel', serif;
-            font-size: 1.2rem;
-            letter-spacing: 3px;
-            color: var(--silver-dark);
-            margin: 20px 0 10px;
-            text-transform: uppercase;
+        /* --- VESTIMENTA (DISEÑO ATRACTIVO) --- */
+        .dress-code-box {
+            margin: 80px auto; max-width: 500px; padding: 40px;
+            background: white; border-radius: 50% 50% 0 0;
+            border: 1px solid var(--silver-chrome); text-align: center;
         }
+        .dress-code-box h2 { font-family: 'Cinzel'; font-size: 1.2rem; letter-spacing: 4px; }
+        .dress-code-box .type { font-family: 'Alex Brush'; font-size: 4rem; color: var(--pink-deep); margin: 10px 0; }
+        .dress-code-box .note { font-size: 0.75rem; text-transform: uppercase; letter-spacing: 2px; color: #888; }
 
-        .family-names {
-            font-family: 'Alex Brush', cursive;
-            font-size: 2.5rem;
-            color: var(--charcoal);
-            margin-bottom: 30px;
-        }
+        /* --- UBICACIONES (ASIMÉTRICAS) --- */
+        .location-grid { display: flex; flex-wrap: wrap; align-items: stretch; margin-bottom: 50px; }
+        .loc-card { flex: 1; min-width: 350px; padding: 80px 40px; display: flex; flex-direction: column; justify-content: center; align-items: center; text-align: center; }
+        .loc-img { flex: 1.2; min-width: 350px; min-height: 500px; background-size: cover; background-position: center; border: 15px solid white; box-shadow: 0 10px 30px rgba(0,0,0,0.1); }
 
-        /* --- CÓDIGO DE VESTIMENTA --- */
-        .dress-code {
-            background: var(--blush);
-            padding: 80px 20px;
-            text-align: center;
-            border-top: 1px solid var(--silver-light);
-            border-bottom: 1px solid var(--silver-light);
+        .loc-title { font-family: 'Alex Brush'; font-size: 4.5rem; color: var(--pink-deep); }
+        .loc-venue { font-family: 'Cinzel'; font-size: 1rem; margin: 15px 0; letter-spacing: 2px; }
+        .btn-gold { 
+            margin-top: 25px; padding: 15px 40px; border: 1px solid var(--pink-deep);
+            color: var(--pink-deep); text-decoration: none; font-size: 0.8rem;
+            letter-spacing: 3px; text-transform: uppercase; transition: 0.4s;
         }
-
-        .dress-code h2 {
-            font-family: 'Cinzel', serif;
-            font-size: 1.8rem;
-            color: var(--silver-dark);
-            margin-bottom: 20px;
-        }
-
-        .dress-code .type {
-            font-family: 'Alex Brush', cursive;
-            font-size: 3.5rem;
-            color: var(--pink-main);
-            margin-bottom: 15px;
-        }
-
-        .dress-code .note {
-            font-size: 0.85rem;
-            text-transform: uppercase;
-            letter-spacing: 2px;
-            color: #777;
-            max-width: 300px;
-            margin: auto;
-            line-height: 1.6;
-        }
-
-        /* --- UBICACIONES (SPLIT) --- */
-        .location-section {
-            display: flex;
-            flex-direction: column;
-            background: #fff;
-        }
-
-        .loc-image {
-            width: 100%;
-            height: 350px;
-            background-size: cover;
-            background-position: center;
-        }
-
-        .loc-content {
-            padding: 60px 30px;
-            text-align: center;
-        }
-
-        .loc-title {
-            font-family: 'Alex Brush', cursive;
-            font-size: 4rem;
-            color: var(--pink-main);
-            margin-bottom: 15px;
-        }
-
-        .loc-venue {
-            font-family: 'Montserrat', sans-serif;
-            font-weight: 600;
-            font-size: 0.9rem;
-            letter-spacing: 2px;
-            margin-bottom: 10px;
-        }
-
-        .loc-address {
-            font-size: 0.85rem;
-            color: #666;
-            margin-bottom: 30px;
-        }
-
-        .btn-maps {
-            display: inline-block;
-            padding: 15px 40px;
-            border: 1px solid var(--silver);
-            color: var(--silver-dark);
-            text-decoration: none;
-            font-size: 0.75rem;
-            font-weight: 600;
-            text-transform: uppercase;
-            letter-spacing: 2px;
-            border-radius: 50px;
-            transition: 0.3s;
-        }
-
-        .btn-maps:hover {
-            background: var(--silver-light);
-            color: var(--pink-main);
-        }
+        .btn-gold:hover { background: var(--pink-deep); color: white; }
 
         /* --- REGALO --- */
-        .gift-area {
-            padding: 80px 20px;
-            text-align: center;
+        .gift-section { padding: 100px 20px; text-align: center; background: var(--pink-soft); }
+        .gift-circle { 
+            width: 300px; height: 300px; margin: auto; border: 1px solid var(--silver-chrome);
+            display: flex; flex-direction: column; justify-content: center; align-items: center;
+            background: white; border-radius: 50%; padding: 30px;
         }
 
-        .gift-frame {
-            border: 2px double var(--silver-light);
-            padding: 50px 20px;
-            max-width: 600px;
-            margin: auto;
+        /* --- CIERRE (TEXTO ABAJO PARA NO TAPAR CARA) --- */
+        .footer {
+            height: 100vh; background: url('final.png') no-repeat center center;
+            background-size: cover; display: flex; align-items: flex-end; /* Texto al fondo */
+            justify-content: center; padding-bottom: 60px; text-align: center;
         }
-
-        /* --- CIERRE --- */
-        .footer-image {
-            height: 85vh;
-            background: url('final.png') no-repeat center center;
-            background-size: cover;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            text-align: center;
-            padding: 30px;
-        }
-
-        .footer-image h2 {
-            font-family: 'Alex Brush', cursive;
-            font-size: clamp(2.5rem, 9vw, 5rem);
-            color: var(--white);
-            text-shadow: 0 4px 15px rgba(0,0,0,0.6);
-            line-height: 1.2;
+        .footer-text {
+            font-family: 'Alex Brush'; font-size: clamp(2.5rem, 8vw, 4.5rem);
+            color: white; text-shadow: 0 5px 15px rgba(0,0,0,0.7);
+            max-width: 800px; padding: 0 20px;
         }
 
         #petals { position: fixed; top: 0; left: 0; width: 100%; height: 100%; pointer-events: none; z-index: 100; }
 
-        @media (min-width: 900px) {
-            .location-section { flex-direction: row; min-height: 70vh; }
-            .loc-image { width: 50%; height: auto; }
-            .loc-content { width: 50%; display: flex; flex-direction: column; justify-content: center; }
-            .framed-section { max-width: 850px; margin: 60px auto; }
-            .loc-image-left { order: 1; }
-            .loc-content-right { order: 2; }
-            .loc-image-right { order: 2; }
-            .loc-content-left { order: 1; }
+        @media (max-width: 768px) {
+            .family-grid { grid-template-columns: 1fr; }
+            .loc-card { order: 2; }
+            .loc-img { order: 1; min-height: 350px; }
+            .hero h1 { font-size: 5rem; }
         }
     </style>
 </head>
@@ -266,79 +125,78 @@
 
     <div id="petals"></div>
 
-    <audio id="bgAudio" loop>
-        <source src="audiopagina.mpeg" type="audio/mpeg">
-    </audio>
+    <audio id="bgAudio" loop><source src="audiopagina.mpeg" type="audio/mpeg"></audio>
 
     <div class="music-control">
-        <button class="btn-music" onclick="toggleAudio()" aria-label="Play/Pause">
-            <svg id="musicIcon" viewBox="0 0 24 24" width="28" height="28">
-                <path fill="currentColor" d="M8 5v14l11-7z"/>
-            </svg>
+        <button class="btn-music" onclick="toggleAudio()">
+            <svg id="musicIcon" viewBox="0 0 24 24" width="24" height="24"><path fill="currentColor" d="M8 5v14l11-7z"/></svg>
         </button>
     </div>
 
     <header class="hero">
         <p data-aos="fade-up">Mis Quince Años</p>
-        <h1 data-aos="zoom-in" data-aos-duration="2000">Damaris Toyos</h1>
+        <h1 data-aos="zoom-in">Damaris Toyos</h1>
         <p data-aos="fade-up" data-aos-delay="300">06 • JUNIO • 2026</p>
     </header>
 
-    <section class="framed-section" data-aos="fade-up">
-        <div class="blessing-text">
-            Con la bendición de Dios y el amor de su familia, te invitamos a celebrar los XV años de nuestra hija
-        </div>
-        
-        <div class="family-title">Mis Padres</div>
-        <div class="family-names">Jessica Toyos & Francisco Toyos</div>
-        
-        <div class="family-title">Mis Padrinos</div>
-        <div class="family-names">Rosy Toyos & Eduardo Toyos</div>
-    </section>
+    <div class="overlap-container">
+        <section class="floating-frame" data-aos="fade-up">
+            <div class="blessing">Con la bendición de Dios y el amor de su familia, te invitamos a celebrar los XV años de nuestra hija</div>
+            <div class="family-grid">
+                <div class="family-item">
+                    <h3>Mis Padres</h3>
+                    <p>Jessica Toyos</p><p>Francisco Toyos</p>
+                </div>
+                <div class="family-item">
+                    <h3>Mis Padrinos</h3>
+                    <p>Rosy Toyos</p><p>Eduardo Toyos</p>
+                </div>
+            </div>
+        </section>
 
-    <section class="dress-code" data-aos="zoom-in">
-        <h2>Código de Vestimenta</h2>
-        <div class="type">Formal</div>
-        <p class="note">Favor de reservarse el color rosa para la quinceañera</p>
-    </section>
+        <section class="dress-code-box" data-aos="zoom-in">
+            <h2>CÓDIGO DE VESTIMENTA</h2>
+            <div class="type">Formal</div>
+            <p class="note">Favor de reservarse el color rosa para la quinceañera</p>
+        </section>
+    </div>
 
-    <div class="location-section">
-        <div class="loc-image loc-image-left" style="background-image: url('emergente1.png');"></div>
-        <div class="loc-content loc-content-right" data-aos="fade-left">
+    <div class="location-grid">
+        <div class="loc-img" style="background-image: url('emergente1.png');"></div>
+        <div class="loc-card" data-aos="fade-left">
             <h2 class="loc-title">Ceremonia</h2>
             <p class="loc-venue">ST. MONICA ROMAN CATHOLIC PARISH</p>
-            <p class="loc-address">12:00 PM | 212 W Medina Rd, Tucson, AZ</p>
-            <a href="https://www.google.com.mx/maps/place/Saint+Monica+Roman+Catholic+Parish+Church/@32.1306632,-110.9749989,17z/..." class="btn-maps" target="_blank">Ver Ubicación</a>
+            <p style="font-size: 0.8rem; color: #888;">12:00 PM | 212 W Medina Rd, Tucson, AZ</p>
+            <a href="https://www.google.com.mx/maps/place/Saint+Monica+Roman+Catholic+Parish+Church/..." class="btn-gold" target="_blank">Ver Mapa</a>
         </div>
     </div>
 
-    <div class="location-section">
-        <div class="loc-content loc-content-left" data-aos="fade-right">
+    <div class="location-grid" style="flex-direction: row-reverse;">
+        <div class="loc-img" style="background-image: url('emergente2.png');"></div>
+        <div class="loc-card" data-aos="fade-right">
             <h2 class="loc-title">Recepción</h2>
             <p class="loc-venue">SALÓN PARTY PLACE</p>
-            <p class="loc-address">07:00 PM | 4547 S 6th Ave, Tucson, AZ</p>
-            <a href="https://www.google.com.mx/maps/place/Party+Place+Tucson+Salon+de+Eventos/@32.1692002,-110.9705071,17z/..." class="btn-maps" target="_blank">Ver Ubicación</a>
+            <p style="font-size: 0.8rem; color: #888;">07:00 PM | 4547 S 6th Ave, Tucson, AZ</p>
+            <a href="https://www.google.com.mx/maps/place/Party+Place+Tucson+Salon+de+Eventos/..." class="btn-gold" target="_blank">Ver Mapa</a>
         </div>
-        <div class="loc-image loc-image-right" style="background-image: url('emergente2.png');"></div>
     </div>
 
-    <section class="gift-area" data-aos="fade-up">
-        <div class="gift-frame">
-            <h2 class="loc-title" style="font-size: 3.5rem;">Lluvia de Sobres</h2>
-            <p style="color: #666; line-height: 1.6; font-size: 0.95rem;">
-                Tu presencia es mi mejor regalo, pero si deseas obsequiarme algo, contaremos con un cofre para sobres en el salón.
-            </p>
+    <section class="gift-section">
+        <div class="gift-circle" data-aos="zoom-in">
+            <h2 class="loc-title" style="font-size: 3rem;">Lluvia de Sobres</h2>
+            <p style="font-size: 0.8rem; line-height: 1.5; color: #666;">Tu presencia es mi mejor regalo, contaremos con un cofre para sobres en el salón.</p>
         </div>
     </section>
 
-    <footer class="footer-image">
-        <h2 data-aos="fade-up">Es un honor contar con su presencia en un día tan especial.</h2>
+    <footer class="footer">
+        <div class="footer-text" data-aos="fade-up">
+            Es un honor contar con su presencia en un día tan especial.
+        </div>
     </footer>
 
     <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
     <script>
         AOS.init({ duration: 1000, once: true });
-
         const audio = document.getElementById('bgAudio');
         const musicIcon = document.getElementById('musicIcon');
 
@@ -357,20 +215,12 @@
             const p = document.createElement('div');
             p.innerHTML = Math.random() > 0.5 ? "🌸" : "🎀";
             const duration = Math.random() * 5 + 8;
-            p.style.cssText = `
-                position: fixed; top: -50px; left: ${Math.random() * 100}vw;
-                font-size: ${Math.random() * 12 + 15}px; opacity: 0.6; pointer-events: none;
-                transition: transform ${duration}s linear, top ${duration}s linear;
-                z-index: 100;
-            `;
+            p.style.cssText = `position: fixed; top: -50px; left: ${Math.random() * 100}vw; font-size: ${Math.random() * 15 + 10}px; opacity: 0.5; transition: transform ${duration}s linear, top ${duration}s linear; z-index: 100;`;
             petalsContainer.appendChild(p);
-            setTimeout(() => {
-                p.style.top = '110vh';
-                p.style.transform = `rotate(${Math.random() * 360}deg) translateX(${Math.random() * 100 - 50}px)`;
-            }, 100);
+            setTimeout(() => { p.style.top = '110vh'; p.style.transform = `rotate(${Math.random() * 360}deg) translateX(${Math.random() * 80}px)`; }, 100);
             setTimeout(() => p.remove(), duration * 1000);
         }
-        setInterval(createPetal, 450);
+        setInterval(createPetal, 500);
     </script>
 </body>
 </html>
