@@ -28,6 +28,31 @@
             scroll-behavior: smooth;
         }
 
+        /* --- CONTROL DE AUDIO (BOTÓN VISIBLE) --- */
+        .music-control {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            z-index: 9999; /* Asegura que esté por encima de todo */
+        }
+
+        .btn-music {
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            background: var(--white);
+            border: 3px solid var(--silver);
+            color: var(--silver-dark);
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+            transition: all 0.3s ease;
+        }
+
+        .btn-music:hover { transform: scale(1.1); background: var(--silver-light); }
+
         /* --- PORTADA --- */
         .hero {
             height: 100vh;
@@ -39,218 +64,76 @@
             align-items: center;
             color: white; 
             text-align: center;
-            position: relative;
         }
 
-        .hero h1 { 
-            font-size: clamp(4.5rem, 18vw, 9rem); 
-            text-shadow: 0 5px 15px rgba(0,0,0,0.2); 
-            margin: 10px 0;
-        }
-
-        .hero p {
-            font-size: 2rem;
-            letter-spacing: 2px;
-        }
-
-        /* --- CONTROL DE AUDIO --- */
-        .music-control {
-            position: fixed;
-            bottom: 30px;
-            right: 30px;
-            z-index: 1000;
-        }
-
-        .btn-music {
-            width: 55px;
-            height: 55px;
-            border-radius: 50%;
-            background: var(--white);
-            border: 2px solid var(--silver);
-            color: var(--silver-dark);
-            cursor: pointer;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
-            transition: all 0.3s ease;
-        }
-
-        .btn-music:hover { transform: scale(1.1); background: var(--silver-light); }
+        .hero h1 { font-size: clamp(4.5rem, 18vw, 9rem); text-shadow: 0 5px 15px rgba(0,0,0,0.2); }
+        .hero p { font-size: 2.2rem; }
 
         /* --- SECCIÓN DE BENDICIÓN --- */
         .blessing-section {
-            padding: 100px 20px;
-            background: var(--white);
+            padding: 80px 20px;
             text-align: center;
         }
 
         .blessing-text {
-            font-size: clamp(2.2rem, 6vw, 3.8rem);
+            font-size: clamp(2.5rem, 6vw, 4rem);
             color: var(--pink-accent);
-            line-height: 1.2;
             max-width: 900px;
             margin: auto;
         }
 
         /* --- PADRES Y PADRINOS --- */
-        .family-section {
-            padding: 100px 20px;
-            background-color: #fdfdfd;
-        }
-
-        .family-container {
-            display: flex;
-            justify-content: center;
-            gap: 30px;
-            max-width: 1100px;
-            margin: 0 auto;
-            flex-wrap: wrap;
-        }
-
+        .family-section { padding: 60px 20px; background-color: #fdfdfd; }
+        .family-container { display: flex; justify-content: center; gap: 30px; flex-wrap: wrap; max-width: 1100px; margin: 0 auto; }
         .family-card {
-            flex: 1;
-            min-width: 300px;
-            padding: 40px 30px;
-            background: white;
-            border-radius: 15px;
-            box-shadow: 0 15px 35px rgba(0,0,0,0.05);
-            border: 1px solid var(--silver-light);
-            border-top: 5px solid var(--silver);
-            text-align: center;
+            flex: 1; min-width: 300px; padding: 40px; background: white; border-radius: 15px;
+            border: 1px solid var(--silver-light); border-top: 5px solid var(--silver); text-align: center;
         }
-
-        .family-card h2 {
-            color: var(--silver-dark);
-            font-size: 3.5rem;
-            margin-bottom: 15px;
-        }
-
-        .family-card p {
-            font-size: 2.2rem;
-            color: #555;
-            margin: 5px 0;
-        }
+        .family-card h2 { color: var(--silver-dark); font-size: 3.5rem; margin-bottom: 10px; }
+        .family-card p { font-size: 2.5rem; color: #555; }
 
         /* --- SECCIONES DIAGONALES --- */
-        .split-section {
-            display: flex; 
-            min-height: 80vh; 
-            background: #fdfdfd; 
-            color: var(--charcoal);
-            align-items: center; 
-            overflow: hidden;
-            flex-wrap: wrap;
-        }
+        .split-section { display: flex; min-height: 80vh; align-items: center; overflow: hidden; flex-wrap: wrap; }
+        .content-side { flex: 1; padding: 50px; min-width: 350px; z-index: 2; }
+        .title-cursive { color: var(--pink-accent); font-size: 5rem; margin-bottom: 10px; }
 
-        .content-side { 
-            flex: 1; 
-            padding: 8% 6%; 
-            z-index: 2; 
-            min-width: 350px;
-        }
-        
-        .title-cursive { 
-            color: var(--pink-accent); 
-            margin-bottom: 10px; 
-            font-size: 5rem; 
-        }
-
-        .address-container {
-            font-family: 'Montserrat', sans-serif;
-            text-transform: uppercase;
-            letter-spacing: 1px;
-        }
-
-        .venue-name {
-            font-weight: 600;
-            font-size: 1.1rem;
-            margin-bottom: 5px;
-        }
-
-        .address-detail {
-            font-size: 0.9rem;
-            color: #666;
-            margin-bottom: 25px;
-        }
+        /* DIRECCIONES (LEGIBLES) */
+        .address-box { font-family: 'Montserrat', sans-serif; text-transform: uppercase; letter-spacing: 1px; }
+        .venue-name { font-weight: 600; font-size: 1.1rem; }
+        .address-detail { font-size: 0.9rem; color: #666; margin-bottom: 20px; }
 
         .image-side-left {
-            flex: 1.3; 
-            min-height: 80vh;
-            background: url('emergente1.png') no-repeat center center;
-            background-size: cover;
-            clip-path: polygon(0 0, 100% 0, 85% 100%, 0% 100%);
-            border-right: 4px solid var(--silver);
+            flex: 1.3; min-height: 80vh; background: url('emergente1.png') no-repeat center center; background-size: cover;
+            clip-path: polygon(0 0, 100% 0, 85% 100%, 0% 100%); border-right: 4px solid var(--silver);
         }
 
         .image-side-right {
-            flex: 1.3; 
-            min-height: 80vh;
-            background: url('emergente2.png') no-repeat center center;
-            background-size: cover;
-            clip-path: polygon(15% 0, 100% 0, 100% 100%, 0% 100%);
-            border-left: 4px solid var(--silver);
+            flex: 1.3; min-height: 80vh; background: url('emergente2.png') no-repeat center center; background-size: cover;
+            clip-path: polygon(15% 0, 100% 0, 100% 100%, 0% 100%); border-left: 4px solid var(--silver);
         }
 
         .btn-luxury {
-            display: inline-block; 
-            padding: 15px 40px; 
-            border: 2px solid var(--silver); 
-            color: var(--silver-dark); 
-            text-decoration: none;
-            background: white;
-            transition: all 0.4s ease; 
-            font-family: 'Montserrat', sans-serif;
-            font-weight: 600;
-            letter-spacing: 2px;
-            text-transform: uppercase;
-            font-size: 0.75rem;
-            border-radius: 50px;
+            display: inline-block; padding: 15px 35px; border: 2px solid var(--silver); color: var(--silver-dark);
+            text-decoration: none; font-family: 'Montserrat', sans-serif; font-weight: 600; border-radius: 50px; transition: 0.3s;
         }
-
         .btn-luxury:hover { background: var(--silver); color: white; }
 
-        .gift-section {
-            padding: 100px 20px;
-            background: #fafafa;
-        }
+        /* --- REGALO --- */
+        .gift-card { border: 2px solid var(--silver-light); padding: 50px; max-width: 750px; margin: 80px auto; text-align: center; border-radius: 20px; }
+        .gift-text { font-size: 3rem; color: #666; }
 
-        .gift-card {
-            border: 2px solid var(--silver-light);
-            padding: 60px 30px; 
-            max-width: 750px; 
-            margin: auto;
-            text-align: center;
-            background: white;
-            border-radius: 20px;
-        }
-
-        .gift-text {
-            font-size: 2.8rem;
-            color: #666;
-            line-height: 1.2;
-        }
-
+        /* --- CIERRE --- */
         .footer-hero {
-            height: 80vh;
-            background: linear-gradient(rgba(0,0,0,0.1), rgba(0,0,0,0.2)), url('final.png') no-repeat center center;
-            background-size: cover;
-            display: flex; 
-            justify-content: center; 
-            align-items: center;
-            color: white; 
-            font-size: clamp(2.5rem, 8vw, 5.5rem);
-            text-align: center;
-            padding: 40px;
+            height: 70vh; background: linear-gradient(rgba(0,0,0,0.1), rgba(0,0,0,0.2)), url('final.png') center;
+            background-size: cover; display: flex; justify-content: center; align-items: center; color: white; font-size: 5rem; text-align: center;
         }
 
         #petals { position: fixed; top: 0; left: 0; width: 100%; height: 100%; pointer-events: none; z-index: 100; }
 
         @media (max-width: 900px) {
             .split-section { flex-direction: column !important; }
-            .image-side-left, .image-side-right { clip-path: none; width: 100%; min-height: 50vh; border: none; }
-            .content-side { text-align: center; padding: 50px 20px; }
-            .title-cursive { font-size: 4rem; }
+            .image-side-left, .image-side-right { clip-path: none; width: 100%; min-height: 40vh; border: none; }
+            .content-side { text-align: center; }
         }
     </style>
 </head>
@@ -263,8 +146,8 @@
     </audio>
 
     <div class="music-control">
-        <button class="btn-music" id="musicBtn" onclick="toggleAudio()">
-            <svg id="musicIcon" viewBox="0 0 24 24" width="24" height="24">
+        <button class="btn-music" id="musicBtn" onclick="toggleAudio()" aria-label="Reproducir música">
+            <svg id="musicIcon" viewBox="0 0 24 24" width="30" height="30">
                 <path fill="currentColor" d="M8 5v14l11-7z"/>
             </svg>
         </button>
@@ -272,8 +155,8 @@
 
     <header class="hero">
         <p data-aos="fade-up">Mis Quince Años</p>
-        <h1 data-aos="zoom-in" data-aos-duration="2000">Damaris Toyos</h1>
-        <p data-aos="fade-up" data-aos-delay="400">06 • Junio • 2026</p>
+        <h1 data-aos="zoom-in">Damaris Toyos</h1>
+        <p data-aos="fade-up">06 • Junio • 2026</p>
     </header>
 
     <section class="blessing-section">
@@ -289,7 +172,7 @@
                 <p>Jessica Toyos</p>
                 <p>Francisco Toyos</p>
             </div>
-            <div class="family-card" data-aos="fade-up" data-aos-delay="200">
+            <div class="family-card" data-aos="fade-up">
                 <h2>Mis Padrinos</h2>
                 <p>Rosy Toyos</p>
                 <p>Eduardo Toyos</p>
@@ -301,7 +184,7 @@
         <div class="image-side-left" data-aos="fade-right"></div>
         <div class="content-side" data-aos="fade-left">
             <h2 class="title-cursive">Ceremonia</h2>
-            <div class="address-container">
+            <div class="address-box">
                 <p class="venue-name">ST. MONICA ROMAN CATHOLIC PARISH</p>
                 <p class="address-detail">12:00 PM | 212 W Medina Rd, Tucson, AZ</p>
             </div>
@@ -313,7 +196,7 @@
         <div class="image-side-right" data-aos="fade-left"></div>
         <div class="content-side" data-aos="fade-right">
             <h2 class="title-cursive">Recepción</h2>
-            <div class="address-container">
+            <div class="address-box">
                 <p class="venue-name">SALÓN PARTY PLACE</p>
                 <p class="address-detail">07:00 PM | 4547 S 6th Ave, Tucson, AZ</p>
             </div>
@@ -329,20 +212,19 @@
     </section>
 
     <div class="footer-hero">
-        <div data-aos="fade-up">Es un honor contar con su presencia en un día tan especial.</div>
+        <div data-aos="fade-up">Es un honor contar con su presencia</div>
     </div>
 
     <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
     <script>
         AOS.init({ duration: 1000, once: true });
 
-        // SCRIPT DE AUDIO RESTAURADO
         const audio = document.getElementById('bgAudio');
         const musicIcon = document.getElementById('musicIcon');
 
         function toggleAudio() {
             if (audio.paused) {
-                audio.play();
+                audio.play().catch(e => console.log("Error al reproducir:", e));
                 musicIcon.innerHTML = '<path fill="currentColor" d="M6 19h4V5H6v14zm8-14v14h4V5h-4z"/>'; 
             } else {
                 audio.pause();
@@ -353,16 +235,13 @@
         function createPetal() {
             const petalsContainer = document.getElementById('petals');
             const p = document.createElement('div');
-            // Moños y flores de vuelta
             p.innerHTML = Math.random() > 0.5 ? "🌸" : "🎀";
             const duration = Math.random() * 5 + 7;
-            
             p.style.cssText = `
                 position: fixed; top: -50px; left: ${Math.random() * 100}vw;
                 font-size: ${Math.random() * 10 + 15}px; opacity: 0.6; pointer-events: none;
                 z-index: 100; transition: transform ${duration}s linear, top ${duration}s linear;
             `;
-
             petalsContainer.appendChild(p);
             setTimeout(() => {
                 p.style.top = '110vh';
