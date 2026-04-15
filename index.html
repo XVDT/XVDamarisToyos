@@ -3,19 +3,21 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>XV Damaris Toyos - Rosa & Plata</title>
+    <title>XV Damaris Toyos - Rosa Intenso & Plata</title>
     <link href="https://fonts.googleapis.com/css2?family=Alex+Brush&family=Montserrat:wght@300;400;600&display=swap" rel="stylesheet">
     <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
     
     <style>
         :root {
+            /* Paleta intensificada */
             --blush-light: #fdf2f7;
             --blush-medium: #f4cfdf;
-            --pink-accent: #ff85a1;
+            --pink-accent: #ff6b91; /* Rosa más intenso para legibilidad */
             --silver-bright: #e8e8e8;
             --silver-metal: #c0c0c0;
-            --silver-dark: #8e8e8e;
+            --silver-dark: #7a7a7a; /* Gris ligeramente más oscuro para contraste */
             --white: #ffffff;
+            --charcoal: #333333;
         }
 
         * { margin: 0; padding: 0; box-sizing: border-box; }
@@ -40,7 +42,7 @@
             width: 50px;
             height: 50px;
             border-radius: 50%;
-            background: var(--white);
+            background: rgba(255, 255, 255, 0.8);
             border: 2px solid var(--silver-metal);
             color: var(--silver-dark);
             cursor: pointer;
@@ -48,30 +50,36 @@
             align-items: center;
             justify-content: center;
             box-shadow: 0 4px 10px rgba(0,0,0,0.15);
+            backdrop-filter: blur(3px);
         }
 
-        /* --- PORTADA --- */
+        /* --- PORTADA (RESTAURADA Y LEGIBLE) --- */
         .hero {
             height: 100vh;
-            background: linear-gradient(rgba(255,255,255,0.2), rgba(255,255,255,0.1)), url('inicio.png') no-repeat center center;
+            /* Eliminada la capa opaca (linear-gradient) */
+            background: url('inicio.png') no-repeat center center;
             background-size: cover;
             display: flex; 
             flex-direction: column; 
             justify-content: center; 
             align-items: center;
             text-align: center;
-            border: 15px solid var(--white);
-            outline: 2px solid var(--silver-bright);
-            outline-offset: -10px;
+            position: relative;
         }
 
+        /* Texto blanco sobre la imagen sin opacar */
         .hero h1 { 
-            font-size: clamp(3.5rem, 15vw, 7rem); 
-            color: var(--pink-accent);
-            text-shadow: 2px 2px 0px var(--white), 4px 4px 10px rgba(0,0,0,0.1);
+            font-size: clamp(3.8rem, 16vw, 8rem); 
+            color: var(--white);
+            text-shadow: 0 4px 15px rgba(0,0,0,0.5); /* Sombra fuerte para legibilidad */
         }
 
-        .hero p { font-size: clamp(1.5rem, 5vw, 2.2rem); color: var(--silver-dark); }
+        .hero p { 
+            font-size: clamp(1.6rem, 5vw, 2.5rem); 
+            color: var(--white);
+            text-shadow: 0 2px 8px rgba(0,0,0,0.5);
+            letter-spacing: 2px;
+        }
 
         /* --- MARCOS DE SECCIÓN --- */
         .section-frame {
@@ -82,6 +90,7 @@
             position: relative;
             text-align: center;
             border-radius: 5px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.03);
         }
 
         .section-frame::before {
@@ -94,85 +103,92 @@
 
         /* --- TEXTOS --- */
         .blessing-text {
-            font-size: clamp(1.8rem, 5vw, 2.8rem);
-            color: var(--pink-accent);
+            font-size: clamp(2rem, 5vw, 3rem);
+            color: var(--pink-accent); /* Más color */
             line-height: 1.1;
         }
 
-        .family-card h2 { color: var(--silver-dark); font-size: 2.2rem; margin-bottom: 5px; }
-        .family-card p { font-size: 1.8rem; color: #666; margin-bottom: 15px; }
+        .family-card h2 { color: var(--silver-dark); font-size: 2.5rem; margin-bottom: 5px; }
+        .family-card p { font-size: 2rem; color: #555; margin-bottom: 15px; }
 
         /* --- CÓDIGO DE VESTIMENTA --- */
         .dress-code-section {
             background: var(--blush-light);
-            border-top: 3px solid var(--silver-bright);
-            border-bottom: 3px solid var(--silver-bright);
+            border-top: 2px solid var(--silver-bright);
+            border-bottom: 2px solid var(--silver-bright);
             padding: 50px 20px;
             text-align: center;
         }
 
-        .dress-code-title { font-size: 3rem; color: var(--silver-dark); }
-        .dress-code-type { font-size: 2.2rem; color: var(--pink-accent); margin: 10px 0; }
+        .dress-code-title { font-size: 3.5rem; color: var(--silver-dark); }
+        .dress-code-type { font-size: 2.5rem; color: var(--pink-accent); margin: 10px 0; }
         .dress-code-note { 
             font-family: 'Montserrat', sans-serif; 
-            font-size: 0.8rem; 
+            font-size: 0.85rem; 
             text-transform: uppercase; 
             letter-spacing: 1px;
-            color: #888;
-            max-width: 250px;
+            color: #666; /* Más oscuro para legibilidad */
+            max-width: 280px;
             margin: auto;
         }
 
-        /* --- UBICACIONES --- */
-        .split-section { display: flex; flex-direction: column; align-items: center; }
+        /* --- UBICACIONES (IMÁGENES LIMPIAS) --- */
+        .split-section { display: flex; flex-direction: column; align-items: center; background: #fff; }
         .image-container {
             width: 100%;
-            height: 250px;
+            height: 300px; /* Un poco más altas para que luzcan */
             background-size: cover;
             background-position: center;
-            border-bottom: 4px solid var(--silver-metal);
+            /* Sin capas opacas */
         }
 
         .content-box { padding: 40px 20px; width: 100%; text-align: center; }
-        .title-cursive { color: var(--pink-accent); font-size: 3.5rem; }
+        .title-cursive { color: var(--pink-accent); font-size: 3.8rem; }
 
         .address-box { font-family: 'Montserrat', sans-serif; margin-bottom: 20px; }
-        .venue-name { font-weight: 600; font-size: 0.95rem; color: #333; }
-        .address-detail { font-size: 0.8rem; color: #777; margin-top: 5px; }
+        .venue-name { font-weight: 600; font-size: 1rem; color: #333; }
+        .address-detail { font-size: 0.85rem; color: #666; margin-top: 5px; }
 
         .btn-luxury {
             display: inline-block; padding: 12px 30px; border: 2px solid var(--silver-metal); 
             color: var(--silver-dark); text-decoration: none; font-family: 'Montserrat', sans-serif; 
-            font-weight: 600; font-size: 0.7rem; border-radius: 50px; text-transform: uppercase;
+            font-weight: 600; font-size: 0.75rem; border-radius: 50px; text-transform: uppercase;
+            transition: all 0.3s ease;
         }
+        .btn-luxury:hover { background: var(--silver-metal); color: var(--white); }
 
         /* --- REGALO --- */
         .gift-section { padding: 60px 20px; background: var(--white); }
         .gift-card { border: 2px double var(--silver-metal); padding: 40px 20px; border-radius: 10px; }
-        .gift-text { font-size: 2.2rem; color: #666; line-height: 1.2; }
+        .gift-text { font-size: 2.5rem; color: #555; line-height: 1.2; }
 
-        /* --- CIERRE --- */
+        /* --- CIERRE (RESTAURADO Y LEGIBLE) --- */
         .footer-hero {
-            height: 60vh;
-            background: linear-gradient(rgba(244, 207, 223, 0.4), rgba(255,255,255,0.2)), url('final.png') center;
+            height: 70vh;
+            /* Eliminada la capa opaca */
+            background: url('final.png') no-repeat center center;
             background-size: cover;
             display: flex; justify-content: center; align-items: center;
-            font-size: clamp(2.2rem, 8vw, 4rem); color: var(--pink-accent);
-            text-align: center; padding: 20px;
-            border-top: 5px solid var(--white);
+            text-align: center; padding: 30px;
+        }
+
+        .footer-text {
+            font-size: clamp(2.5rem, 8vw, 4.5rem); 
+            color: var(--white); /* Texto blanco */
+            text-shadow: 0 4px 15px rgba(0,0,0,0.6); /* Sombra fuerte */
+            line-height: 1.1;
         }
 
         #petals { position: fixed; top: 0; left: 0; width: 100%; height: 100%; pointer-events: none; z-index: 100; }
 
         /* AJUSTES PARA TABLET/PC */
         @media (min-width: 900px) {
-            .split-section { flex-direction: row; min-height: 60vh; }
-            .image-container { width: 50%; height: 60vh; border-bottom: none; }
-            .content-box { width: 50%; }
-            .section-frame { max-width: 800px; margin: 40px auto; }
-            .dress-code-note { max-width: 100%; }
-            .image-side-left { border-right: 5px solid var(--silver-metal); clip-path: polygon(0 0, 100% 0, 85% 100%, 0% 100%); }
-            .image-side-right { border-left: 5px solid var(--silver-metal); clip-path: polygon(15% 0, 100% 0, 100% 100%, 0% 100%); }
+            .split-section { flex-direction: row; min-height: 70vh; }
+            .image-container { width: 50%; height: 70vh; }
+            .content-box { width: 50%; padding: 60px; }
+            .section-frame { max-width: 900px; margin: 50px auto; padding: 60px; }
+            .image-side-left { border-right: 8px solid var(--white); }
+            .image-side-right { border-left: 8px solid var(--white); }
         }
     </style>
 </head>
@@ -185,7 +201,7 @@
     </audio>
 
     <div class="music-control">
-        <button class="btn-music" onclick="toggleAudio()">
+        <button class="btn-music" onclick="toggleAudio()" aria-label="Controlar música">
             <svg id="musicIcon" viewBox="0 0 24 24" width="24" height="24">
                 <path fill="currentColor" d="M8 5v14l11-7z"/>
             </svg>
@@ -195,7 +211,7 @@
     <header class="hero">
         <p data-aos="fade-up">Mis Quince Años</p>
         <h1 data-aos="zoom-in">Damaris Toyos</h1>
-        <p data-aos="fade-up">06 • Junio • 2026</p>
+        <p data-aos="fade-up" data-aos-delay="200">06 • Junio • 2026</p>
     </header>
 
     <div class="section-frame" data-aos="fade-up">
@@ -227,7 +243,7 @@
                 <p class="venue-name">ST. MONICA ROMAN CATHOLIC PARISH</p>
                 <p class="address-detail">12:00 PM | 212 W Medina Rd, Tucson, AZ</p>
             </div>
-            <a href="https://www.google.com.mx/maps/place/Saint+Monica+Roman+Catholic+Parish+Church/@32.1306632,-110.9749989,17z/..." class="btn-luxury" target="_blank">Ver Ubicación</a>
+            <a href="https://www.google.com.mx/maps/place/Saint+Monica+Roman+Catholic+Parish+Church/@32.1306632,-110.9749989,17z/data=!3m1!4b1!4m6!3m5!1s0x86d67bb6794d9493:0x70e9adf1de4d99de!8m2!3d32.1306587!4d-110.972424!16s%2Fg%2F1tf7y4v2" class="btn-luxury" target="_blank">Ver Ubicación</a>
         </div>
     </section>
 
@@ -238,20 +254,20 @@
                 <p class="venue-name">SALÓN PARTY PLACE</p>
                 <p class="address-detail">07:00 PM | 4547 S 6th Ave, Tucson, AZ</p>
             </div>
-            <a href="https://www.google.com.mx/maps/place/Party+Place+Tucson+Salon+de+Eventos/@32.1691957,-110.9679322,17z/..." class="btn-luxury" target="_blank">Ver Ubicación</a>
+            <a href="https://www.google.com.mx/maps/place/Party+Place+Tucson+Salon+de+Eventos/@32.1692002,-110.9705071,17z/data=!3m1!4b1!4m6!3m5!1s0x86d67a6e0347b6d1:0xd58c6d2d511b3986!8m2!3d32.1691957!4d-110.9679322!16s%2Fg%2F11c2ns9r8w" class="btn-luxury" target="_blank">Ver Ubicación</a>
         </div>
         <div class="image-container image-side-right" style="background-image: url('emergente2.png');"></div>
     </section>
 
     <div class="section-frame gift-section" data-aos="zoom-in">
         <div class="gift-card">
-            <h2 class="title-cursive" style="font-size: 3rem;">Lluvia de Sobres</h2>
+            <h2 class="title-cursive" style="font-size: 3.5rem;">Lluvia de Sobres</h2>
             <p class="gift-text">Tu presencia es mi mejor regalo, pero si deseas obsequiarme algo, contaremos con un cofre para sobres en el salón.</p>
         </div>
     </div>
 
     <footer class="footer-hero">
-        <div data-aos="fade-up">¡Te esperamos!</div>
+        <div class="footer-text" data-aos="fade-up">Es un honor contar con su presencia en un día tan especial.</div>
     </footer>
 
     <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
@@ -273,12 +289,13 @@
 
         function createPetal() {
             const petalsContainer = document.getElementById('petals');
+            if(!petalsContainer) return;
             const p = document.createElement('div');
             p.innerHTML = Math.random() > 0.5 ? "🌸" : "🎀";
             const duration = Math.random() * 5 + 7;
             p.style.cssText = `
                 position: fixed; top: -50px; left: ${Math.random() * 100}vw;
-                font-size: ${Math.random() * 10 + 15}px; opacity: 0.6; pointer-events: none;
+                font-size: ${Math.random() * 10 + 15}px; opacity: 0.7; pointer-events: none;
                 z-index: 100; transition: transform ${duration}s linear, top ${duration}s linear;
             `;
             petalsContainer.appendChild(p);
