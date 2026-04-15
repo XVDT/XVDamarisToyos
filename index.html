@@ -4,24 +4,24 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>XV Damaris Toyos - Silver & Pink Edition</title>
-    <link href="https://fonts.googleapis.com/css2?family=Alex+Brush&family=Montserrat:wght@200;300;400;600&family=Cinzel:wght@400;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Alex+Brush&family=Montserrat:wght@300;400;600&display=swap" rel="stylesheet">
     <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
     
     <style>
         :root {
             --blush: #f4cfdf; 
-            --charcoal: #1a1a1a; 
             --silver: #C0C0C0; 
             --silver-light: #E8E8E8;
             --silver-dark: #8e8e8e;
             --pink-accent: #ff85a1; 
             --white: #ffffff;
+            --charcoal: #1a1a1a;
         }
 
         * { margin: 0; padding: 0; box-sizing: border-box; }
         
         body { 
-            font-family: 'Montserrat', sans-serif; 
+            font-family: 'Alex Brush', cursive; 
             background: var(--white); 
             overflow-x: hidden; 
             color: #333; 
@@ -43,17 +43,14 @@
         }
 
         .hero h1 { 
-            font-family: 'Alex Brush', cursive; 
             font-size: clamp(4.5rem, 18vw, 9rem); 
             text-shadow: 0 5px 15px rgba(0,0,0,0.2); 
             margin: 10px 0;
         }
 
         .hero p {
-            font-size: 1.2rem;
-            letter-spacing: 5px;
-            text-transform: uppercase;
-            font-family: 'Alex Brush', cursive; /* Cursiva también aquí */
+            font-size: 2rem;
+            letter-spacing: 2px;
         }
 
         /* --- SECCIÓN DE BENDICIÓN --- */
@@ -64,7 +61,6 @@
         }
 
         .blessing-text {
-            font-family: 'Alex Brush', cursive;
             font-size: clamp(2.2rem, 6vw, 3.8rem);
             color: var(--pink-accent);
             line-height: 1.2;
@@ -100,15 +96,13 @@
         }
 
         .family-card h2 {
-            font-family: 'Alex Brush', cursive;
             color: var(--silver-dark);
-            font-size: 3rem;
+            font-size: 3.5rem;
             margin-bottom: 15px;
         }
 
         .family-card p {
-            font-family: 'Alex Brush', cursive; /* Más cursiva */
-            font-size: 1.8rem;
+            font-size: 2.2rem;
             color: #555;
             margin: 5px 0;
         }
@@ -132,17 +126,28 @@
         }
         
         .title-cursive { 
-            font-family: 'Alex Brush', cursive; 
             color: var(--pink-accent); 
             margin-bottom: 10px; 
-            font-size: 4.5rem; 
+            font-size: 5rem; 
         }
 
-        .address-text {
-            font-family: 'Alex Brush', cursive;
-            font-size: 1.8rem;
-            color: #777;
-            margin-bottom: 20px;
+        /* --- DIRECCIONES (FUENTE LEGIBLE) --- */
+        .address-container {
+            font-family: 'Montserrat', sans-serif;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .venue-name {
+            font-weight: 600;
+            font-size: 1.1rem;
+            margin-bottom: 5px;
+        }
+
+        .address-detail {
+            font-size: 0.9rem;
+            color: #666;
+            margin-bottom: 25px;
         }
 
         .image-side-left {
@@ -172,6 +177,7 @@
             text-decoration: none;
             background: white;
             transition: all 0.4s ease; 
+            font-family: 'Montserrat', sans-serif;
             font-weight: 600;
             letter-spacing: 2px;
             text-transform: uppercase;
@@ -192,8 +198,8 @@
 
         .gift-card {
             border: 2px solid var(--silver-light);
-            padding: 50px 30px; 
-            max-width: 700px; 
+            padding: 60px 30px; 
+            max-width: 750px; 
             margin: auto;
             text-align: center;
             background: white;
@@ -201,10 +207,9 @@
         }
 
         .gift-text {
-            font-family: 'Alex Brush', cursive;
-            font-size: 2.2rem;
+            font-size: 2.8rem;
             color: #666;
-            line-height: 1.4;
+            line-height: 1.2;
         }
 
         /* --- CIERRE --- */
@@ -216,8 +221,7 @@
             justify-content: center; 
             align-items: center;
             color: white; 
-            font-family: 'Alex Brush', cursive; 
-            font-size: clamp(2.5rem, 8vw, 5rem);
+            font-size: clamp(2.5rem, 8vw, 5.5rem);
             text-align: center;
             padding: 40px;
         }
@@ -228,6 +232,7 @@
             .split-section { flex-direction: column !important; }
             .image-side-left, .image-side-right { clip-path: none; width: 100%; min-height: 50vh; border: none; }
             .content-side { text-align: center; padding: 50px 20px; }
+            .title-cursive { font-size: 4rem; }
         }
     </style>
 </head>
@@ -270,8 +275,10 @@
         <div class="image-side-left" data-aos="fade-right"></div>
         <div class="content-side" data-aos="fade-left">
             <h2 class="title-cursive">Ceremonia</h2>
-            <p style="letter-spacing: 1px; font-weight: 600;">ST. MONICA ROMAN CATHOLIC PARISH</p>
-            <p class="address-text">12:00 PM | 212 W Medina Rd, Tucson, AZ</p>
+            <div class="address-container">
+                <p class="venue-name">ST. MONICA ROMAN CATHOLIC PARISH</p>
+                <p class="address-detail">12:00 PM | 212 W Medina Rd, Tucson, AZ</p>
+            </div>
             <a href="https://www.google.com.mx/maps/place/Saint+Monica+Roman+Catholic+Parish+Church/@32.1306632,-110.9749989,17z/data=!3m1!4b1!4m6!3m5!1s0x86d67bb6794d9493:0x70e9adf1de4d99de!8m2!3d32.1306587!4d-110.972424!16s%2Fg%2F1tf7y4v2?entry=ttu&g_ep=EgoyMDI2MDQwOC4wIKXMDSoASAFQAw%3D%3D" class="btn-luxury" target="_blank">Ver Ubicación</a>
         </div>
     </section>
@@ -280,15 +287,17 @@
         <div class="image-side-right" data-aos="fade-left"></div>
         <div class="content-side" data-aos="fade-right">
             <h2 class="title-cursive">Recepción</h2>
-            <p style="letter-spacing: 1px; font-weight: 600;">SALÓN PARTY PLACE</p>
-            <p class="address-text">07:00 PM | 4547 S 6th Ave, Tucson, AZ</p>
+            <div class="address-container">
+                <p class="venue-name">SALÓN PARTY PLACE</p>
+                <p class="address-detail">07:00 PM | 4547 S 6th Ave, Tucson, AZ</p>
+            </div>
             <a href="https://www.google.com.mx/maps/place/Party+Place+Tucson+Salon+de+Eventos/@32.1692002,-110.9705071,17z/data=!3m1!4b1!4m6!3m5!1s0x86d67a6e0347b6d1:0xd58c6d2d511b3986!8m2!3d32.1691957!4d-110.9679322!16s%2Fg%2F11c2ns9r8w?entry=ttu&g_ep=EgoyMDI2MDQwOC4wIKXMDSoASAFQAw%3D%3D" class="btn-luxury" target="_blank">Ver Ubicación</a>
         </div>
     </section>
 
     <section class="gift-section">
         <div class="gift-card" data-aos="zoom-in">
-            <h2 class="title-cursive" style="font-size: 3.5rem;">Lluvia de Sobres</h2>
+            <h2 class="title-cursive" style="font-size: 4rem;">Lluvia de Sobres</h2>
             <p class="gift-text">Tu presencia es mi mejor regalo, pero si deseas obsequiarme algo, contaremos con un cofre para sobres en el salón.</p>
         </div>
     </section>
@@ -304,7 +313,6 @@
         function createPetal() {
             const petalsContainer = document.getElementById('petals');
             const p = document.createElement('div');
-            // Regresamos el emoji de moño 🎀 y pétalos 🌸
             p.innerHTML = Math.random() > 0.5 ? "🌸" : "🎀";
             const duration = Math.random() * 5 + 7;
             
