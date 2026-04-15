@@ -3,21 +3,50 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>XV Damaris Toyos - Luxury Edition</title>
-    <link href="https://fonts.googleapis.com/css2?family=Alex+Brush&family=Montserrat:wght@200;400;600&family=Cinzel:wght@400;700&display=swap" rel="stylesheet">
+    <title>XV Damaris Toyos - Elite Pink & Silver</title>
+    <link href="https://fonts.googleapis.com/css2?family=Alex+Brush&family=Montserrat:wght@200;300;400;600&family=Cinzel:wght@400;600;700&display=swap" rel="stylesheet">
     <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
     
     <style>
         :root {
-            --pink-deep: #ff6b91;
+            --pink-accent: #ff6b91;
             --pink-soft: #fef5f8;
-            --silver: #c0c0c0;
+            --pink-blush: #f4cfdf;
+            --silver-chrome: #c0c0c0;
+            --silver-light: #e8e8e8;
+            --silver-dark: #8e8e8e;
             --white: #ffffff;
-            --text-dark: #2c2c2c;
+            --charcoal: #2c2c2c;
         }
 
         * { margin: 0; padding: 0; box-sizing: border-box; }
-        body { font-family: 'Montserrat', sans-serif; background: var(--white); overflow-x: hidden; color: var(--text-dark); }
+        
+        body { 
+            font-family: 'Montserrat', sans-serif; 
+            background: var(--white); 
+            color: var(--charcoal); 
+            overflow-x: hidden; 
+            scroll-behavior: smooth;
+        }
+
+        /* --- BOTÓN DE AUDIO LUXURY --- */
+        .music-control {
+            position: fixed;
+            bottom: 25px;
+            right: 25px;
+            z-index: 9999;
+        }
+        .btn-music {
+            width: 55px; height: 55px; border-radius: 50%;
+            background: rgba(255, 255, 255, 0.85);
+            border: 1px solid var(--silver-chrome);
+            color: var(--pink-accent);
+            cursor: pointer; display: flex; align-items: center; justify-content: center;
+            box-shadow: 0 10px 25px rgba(0,0,0,0.1);
+            backdrop-filter: blur(8px);
+            transition: all 0.4s ease;
+        }
+        .btn-music:hover { transform: scale(1.1); border-color: var(--pink-accent); }
 
         /* --- PORTADA --- */
         .hero {
@@ -25,160 +54,218 @@
             background: url('inicio.png') no-repeat center center;
             background-size: cover;
             display: flex; flex-direction: column; justify-content: center; align-items: center;
-            text-align: center;
+            text-align: center; position: relative;
+        }
+        .hero::after {
+            content: ''; position: absolute; bottom: 0; width: 100%; height: 20vh;
+            background: linear-gradient(to top, var(--white) 0%, transparent 100%);
         }
         .hero h1 { 
-            font-family: 'Alex Brush', cursive; font-size: clamp(4rem, 15vw, 8rem); 
-            color: white; text-shadow: 0 8px 25px rgba(0,0,0,0.5);
+            font-family: 'Alex Brush', cursive; 
+            font-size: clamp(4.5rem, 16vw, 9rem); 
+            color: var(--white);
+            text-shadow: 0 10px 30px rgba(0,0,0,0.5);
+            z-index: 2; margin-bottom: 5px;
         }
-        .hero p { font-size: 0.9rem; letter-spacing: 6px; color: white; text-transform: uppercase; font-weight: 300; }
+        .hero p {
+            font-family: 'Cinzel', serif; font-size: 1.1rem; letter-spacing: 8px;
+            color: var(--white); text-shadow: 0 5px 15px rgba(0,0,0,0.5); z-index: 2;
+        }
 
-        /* --- CONTENEDORES --- */
-        .section-padding { padding: 80px 20px; }
-        
-        .framed-content {
-            max-width: 900px; margin: auto; padding: 60px 30px;
-            border: 1px solid var(--silver); position: relative; background: white; text-align: center;
+        /* --- SECCIÓN SUPERPUESTA (BENDICIÓN Y FAMILIA) --- */
+        .overlap-container {
+            margin-top: -80px; /* Superposición creativa */
+            position: relative; z-index: 10;
+            padding: 0 20px;
         }
-        .framed-content::before {
+        .elite-card {
+            max-width: 1000px; margin: 0 auto; background: var(--white);
+            padding: 70px 40px; text-align: center;
+            box-shadow: 0 25px 50px rgba(0,0,0,0.06);
+            border: 1px solid var(--silver-light);
+            border-top: 4px solid var(--pink-blush);
+            border-radius: 4px; position: relative;
+        }
+        /* Marco interno doble */
+        .elite-card::before {
             content: ''; position: absolute; top: 10px; left: 10px; right: 10px; bottom: 10px;
-            border: 1px solid var(--pink-soft); pointer-events: none;
+            border: 1px solid var(--silver-light); pointer-events: none;
         }
 
-        .cursive-title { font-family: 'Alex Brush', cursive; font-size: clamp(2.5rem, 7vw, 4rem); color: var(--pink-deep); margin-bottom: 20px; }
+        .blessing-text {
+            font-family: 'Alex Brush', cursive; font-size: clamp(2.2rem, 5vw, 3.5rem);
+            color: var(--pink-accent); line-height: 1.2; margin-bottom: 50px;
+        }
 
-        /* --- VESTIMENTA --- */
-        .dress-code-section { background: var(--pink-soft); text-align: center; padding: 60px 20px; border-top: 1px solid var(--silver); }
-        .dress-title { font-family: 'Cinzel'; font-size: 1.2rem; letter-spacing: 3px; color: var(--silver); }
-        .dress-type { font-family: 'Alex Brush'; font-size: 3.5rem; color: var(--pink-deep); margin: 10px 0; }
-        .dress-note { font-size: 0.8rem; text-transform: uppercase; letter-spacing: 1px; color: #777; }
+        .family-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 40px; }
+        .family-block h2 { font-family: 'Cinzel', serif; font-size: 1rem; color: var(--silver-dark); letter-spacing: 3px; margin-bottom: 15px; text-transform: uppercase; }
+        .family-block p { font-family: 'Alex Brush', cursive; font-size: 2.5rem; color: var(--charcoal); }
 
-        /* --- UBICACIONES (ARREGLADAS) --- */
-        .location-container { display: flex; flex-direction: column; width: 100%; max-width: 1200px; margin: 40px auto; gap: 0; }
+        /* --- VESTIMENTA (DISEÑO BADGE) --- */
+        .dress-code-wrapper { padding: 100px 20px; background: var(--pink-soft); text-align: center; }
+        .dress-badge {
+            display: inline-block; padding: 40px 60px; border: 2px solid var(--silver-chrome);
+            background: var(--white); position: relative;
+        }
+        .dress-badge::after {
+            content: ''; position: absolute; top: 5px; left: 5px; right: 5px; bottom: 5px;
+            border: 1px solid var(--pink-blush); pointer-events: none;
+        }
+        .dress-badge h3 { font-family: 'Cinzel', serif; font-size: 1.2rem; letter-spacing: 4px; color: var(--silver-dark); }
+        .dress-badge .type { font-family: 'Alex Brush', cursive; font-size: 4.5rem; color: var(--pink-accent); margin: 10px 0; }
+        .dress-badge .note { font-size: 0.8rem; text-transform: uppercase; letter-spacing: 2px; color: #777; max-width: 250px; margin: auto; }
+
+        /* --- UBICACIONES (DIAGONALES PERFECTAS Y ALINEADAS) --- */
+        .split-section { display: flex; min-height: 85vh; background: var(--white); align-items: center; overflow: hidden; flex-wrap: wrap; position: relative; }
         
-        .location-row { display: flex; flex-wrap: wrap; align-items: stretch; min-height: 500px; overflow: hidden; }
+        .content-side { flex: 1; padding: 8% 6%; z-index: 2; min-width: 350px; display: flex; flex-direction: column; justify-content: center; }
+        .content-left { text-align: right; }
+        .content-right { text-align: left; }
 
-        .location-image { 
-            flex: 1; min-width: 350px; min-height: 400px; 
-            background-size: cover; background-position: center; 
-            transition: transform 0.8s ease;
+        .image-side-left {
+            flex: 1.2; min-height: 85vh; background: url('emergente1.png') no-repeat center center; background-size: cover;
+            clip-path: polygon(0 0, 100% 0, 85% 100%, 0% 100%);
         }
-        .location-row:hover .location-image { transform: scale(1.03); }
-
-        .location-info { 
-            flex: 1; min-width: 350px; padding: 60px 40px; 
-            display: flex; flex-direction: column; justify-content: center; align-items: center; 
-            text-align: center; background: white;
+        .image-side-right {
+            flex: 1.2; min-height: 85vh; background: url('emergente2.png') no-repeat center center; background-size: cover;
+            clip-path: polygon(15% 0, 100% 0, 100% 100%, 0% 100%);
         }
 
-        .venue-label { font-family: 'Cinzel'; font-size: 0.85rem; letter-spacing: 3px; color: var(--silver); margin-bottom: 10px; }
-        .venue-name { font-weight: 600; font-size: 1rem; letter-spacing: 1px; margin-bottom: 5px; }
-        .venue-details { font-size: 0.85rem; color: #666; margin-bottom: 25px; }
+        .title-gold { font-family: 'Cinzel', serif; color: var(--pink-accent); margin-bottom: 20px; font-size: 2.5rem; letter-spacing: 2px; }
+        .loc-name { font-weight: 600; letter-spacing: 2px; margin-bottom: 10px; font-size: 1rem; text-transform: uppercase; }
+        .loc-address { color: #888; font-size: 0.9rem; margin-bottom: 30px; }
 
-        .btn-maps { 
-            padding: 15px 35px; border: 1px solid var(--pink-deep); color: var(--pink-deep); 
-            text-decoration: none; font-size: 0.75rem; font-weight: 600; 
-            text-transform: uppercase; letter-spacing: 2px; border-radius: 50px; transition: 0.3s;
+        .btn-luxury {
+            display: inline-block; padding: 18px 45px; border: 1px solid var(--silver-chrome); 
+            color: var(--silver-dark); text-decoration: none; background: transparent;
+            transition: all 0.4s ease; font-weight: 600; letter-spacing: 2px; text-transform: uppercase; font-size: 0.75rem;
         }
-        .btn-maps:hover { background: var(--pink-deep); color: white; box-shadow: 0 5px 15px rgba(255,107,145,0.3); }
+        .btn-luxury:hover { background: var(--silver-chrome); color: var(--white); box-shadow: 0 10px 20px rgba(192, 192, 192, 0.3); border-color: transparent; }
 
-        /* --- CIERRE --- */
-        .footer {
-            height: 100vh; background: url('final.png') no-repeat center center;
-            background-size: cover; display: flex; align-items: flex-end; justify-content: center;
-            padding-bottom: 80px; text-align: center;
+        /* --- REGALO --- */
+        .gift-section { padding: 120px 20px; background: var(--white); text-align: center; }
+        .gift-card {
+            border: 1px solid var(--silver-light); padding: 70px 40px; max-width: 800px; margin: auto;
+            background: var(--pink-soft); position: relative;
         }
-        .footer-text {
-            font-family: 'Alex Brush'; font-size: clamp(2.2rem, 8vw, 4.5rem);
-            color: white; text-shadow: 0 4px 15px rgba(0,0,0,0.6); padding: 0 20px;
+        .gift-card::before {
+            content: ''; position: absolute; top: -10px; left: -10px; right: -10px; bottom: -10px;
+            border: 1px solid var(--silver-chrome); z-index: -1;
+        }
+
+        /* --- CIERRE CON TEXTO PROTEGIDO (GLASSMORPHISM) --- */
+        .footer-hero {
+            height: 100vh;
+            background: url('final.png') no-repeat center center;
+            background-size: cover;
+            display: flex; flex-direction: column; justify-content: flex-end; /* Lo empuja hacia abajo */
+            align-items: center; position: relative;
+        }
+        .glass-panel {
+            width: 100%; padding: 40px 20px 60px 20px;
+            background: linear-gradient(to top, rgba(0,0,0,0.8) 0%, rgba(0,0,0,0.4) 60%, transparent 100%);
+            text-align: center;
+        }
+        .glass-panel h2 {
+            font-family: 'Alex Brush', cursive; font-size: clamp(2.5rem, 8vw, 4.5rem);
+            color: var(--white); text-shadow: 0 4px 15px rgba(0,0,0,0.8);
+            max-width: 900px; margin: auto; line-height: 1.2;
         }
 
         #petals { position: fixed; top: 0; left: 0; width: 100%; height: 100%; pointer-events: none; z-index: 100; }
 
-        @media (max-width: 768px) {
-            .location-row { flex-direction: column; }
-            .location-info { padding: 40px 20px; order: 2; }
-            .location-image { order: 1; min-height: 300px; }
-            .location-row-reverse { flex-direction: column; }
-        }
-
-        @media (min-width: 769px) {
-            .location-row-reverse { flex-direction: row-reverse; }
+        @media (max-width: 900px) {
+            .split-section { flex-direction: column !important; min-height: auto; }
+            .image-side-left, .image-side-right { clip-path: none; width: 100%; min-height: 50vh; order: 1; }
+            .content-side { text-align: center; padding: 60px 25px; order: 2; width: 100%; }
         }
     </style>
 </head>
 <body>
 
     <div id="petals"></div>
+
     <audio id="bgAudio" loop><source src="audiopagina.mpeg" type="audio/mpeg"></audio>
 
     <div class="music-control">
-        <button class="btn-music" onclick="toggleAudio()" style="width:50px; height:50px; border-radius:50%; background:white; border:1px solid #c0c0c0; color:#ff6b91; cursor:pointer; display:flex; align-items:center; justify-content:center;">
-            <svg id="musicIcon" viewBox="0 0 24 24" width="24" height="24"><path fill="currentColor" d="M8 5v14l11-7z"/></svg>
+        <button class="btn-music" id="musicBtn" onclick="toggleAudio()">
+            <svg id="musicIcon" viewBox="0 0 24 24" width="24" height="24">
+                <path fill="currentColor" d="M8 5v14l11-7z"/>
+            </svg>
         </button>
     </div>
 
     <header class="hero">
-        <p data-aos="fade-up">Mis Quince Años</p>
-        <h1 data-aos="zoom-in">Damaris Toyos</h1>
-        <p data-aos="fade-up" data-aos-delay="300">06 • JUNIO • 2026</p>
+        <p data-aos="fade-down" data-aos-duration="1500" style="margin-bottom: 20px;">MIS QUINCE AÑOS</p>
+        <h1 data-aos="zoom-in" data-aos-duration="2000">Damaris Toyos</h1>
+        <p data-aos="fade-up" data-aos-duration="1500" style="margin-top: 20px;">06 • JUNIO • 2026</p>
     </header>
 
-    <div class="section-padding">
-        <div class="framed-content" data-aos="fade-up">
-            <h2 class="cursive-title">Nuestra Invitación</h2>
-            <p style="font-size: 1.1rem; line-height: 1.6; color: #555;">Con la bendición de Dios y el amor de su familia, te invitamos a celebrar los XV años de nuestra hija.</p>
-            <div style="margin-top: 30px;">
-                <p style="font-family: 'Cinzel'; font-size: 0.8rem; letter-spacing: 2px; color: var(--silver);">Padres</p>
-                <p style="font-family: 'Alex Brush'; font-size: 2.2rem;">Jessica Toyos & Francisco Toyos</p>
+    <div class="overlap-container">
+        <section class="elite-card" data-aos="fade-up">
+            <div class="blessing-text">
+                Con la bendición de Dios y el amor de su familia, te invitamos a celebrar los XV años de nuestra hija
             </div>
-        </div>
+            <div class="family-grid">
+                <div class="family-block">
+                    <h2>Mis Padres</h2>
+                    <p>Jessica Toyos</p>
+                    <p>Francisco Toyos</p>
+                </div>
+                <div class="family-block">
+                    <h2>Mis Padrinos</h2>
+                    <p>Rosy Toyos</p>
+                    <p>Eduardo Toyos</p>
+                </div>
+            </div>
+        </section>
     </div>
 
-    <section class="dress-code-section" data-aos="zoom-in">
-        <p class="dress-title">Código de Vestimenta</p>
-        <h2 class="dress-type">Formal</h2>
-        <p class="dress-note">Favor de reservarse el color rosa para la quinceañera</p>
+    <section class="dress-code-wrapper">
+        <div class="dress-badge" data-aos="zoom-in">
+            <h3>CÓDIGO DE VESTIMENTA</h3>
+            <div class="type">Formal</div>
+            <p class="note">Favor de reservarse el color rosa para la quinceañera</p>
+        </div>
     </section>
 
-    <div class="location-container">
-        <div class="location-row" data-aos="fade-right">
-            <div class="location-image" style="background-image: url('emergente1.png');"></div>
-            <div class="location-info">
-                <p class="venue-label">La Ceremonia</p>
-                <h2 class="cursive-title" style="font-size: 3.5rem;">Misa de Acción de Gracias</h2>
-                <p class="venue-name">ST. MONICA ROMAN CATHOLIC PARISH</p>
-                <p class="venue-details">12:00 PM | 212 W Medina Rd, Tucson, AZ</p>
-                <a href="https://maps.app.goo.gl/SaintMonicaTucson" class="btn-maps" target="_blank">Abrir en Mapa</a>
-            </div>
+    <section class="split-section">
+        <div class="image-side-left" data-aos="fade-right"></div>
+        <div class="content-side content-right" data-aos="fade-left">
+            <h2 class="title-gold">La Ceremonia</h2>
+            <p class="loc-name">ST. MONICA ROMAN CATHOLIC PARISH</p>
+            <p class="loc-address">12:00 PM | 212 W Medina Rd, Tucson, AZ</p>
+            <a href="https://www.google.com.mx/maps/place/Saint+Monica+Roman+Catholic+Parish+Church/@32.1306632,-110.9749989,17z/data=!3m1!4b1!4m6!3m5!1s0x86d67bb6794d9493:0x70e9adf1de4d99de!8m2!3d32.1306587!4d-110.972424!16s%2Fg%2F1tf7y4v2?entry=ttu&g_ep=EgoyMDI2MDQwOC4wIKXMDSoASAFQAw%3D%3D" class="btn-luxury" target="_blank">Ver Ubicación</a>
         </div>
+    </section>
 
-        <div class="location-row location-row-reverse" data-aos="fade-left">
-            <div class="location-image" style="background-image: url('emergente2.png');"></div>
-            <div class="location-info">
-                <p class="venue-label">La Celebración</p>
-                <h2 class="cursive-title" style="font-size: 3.5rem;">Recepción</h2>
-                <p class="venue-name">SALÓN PARTY PLACE</p>
-                <p class="venue-details">07:00 PM | 4547 S 6th Ave, Tucson, AZ</p>
-                <a href="https://maps.app.goo.gl/PartyPlaceTucson" class="btn-maps" target="_blank">Abrir en Mapa</a>
-            </div>
+    <section class="split-section" style="flex-direction: row-reverse; background: var(--pink-soft);">
+        <div class="image-side-right" data-aos="fade-left"></div>
+        <div class="content-side content-left" data-aos="fade-right">
+            <h2 class="title-gold">La Recepción</h2>
+            <p class="loc-name">SALÓN PARTY PLACE</p>
+            <p class="loc-address">07:00 PM | 4547 S 6th Ave, Tucson, AZ</p>
+            <a href="https://www.google.com.mx/maps/place/Party+Place+Tucson+Salon+de+Eventos/@32.1692002,-110.9705071,17z/data=!3m1!4b1!4m6!3m5!1s0x86d67a6e0347b6d1:0xd58c6d2d511b3986!8m2!3d32.1691957!4d-110.9679322!16s%2Fg%2F11c2ns9r8w?entry=ttu&g_ep=EgoyMDI2MDQwOC4wIKXMDSoASAFQAw%3D%3D" class="btn-luxury" target="_blank">Ver Ubicación</a>
+        </div>
+    </section>
+
+    <section class="gift-section">
+        <div class="gift-card" data-aos="zoom-in">
+            <h2 class="title-gold" style="font-size: 2rem; color: var(--silver-dark);">Lluvia de Sobres</h2>
+            <p style="line-height: 1.8; color: #666; max-width: 500px; margin: auto;">Tu presencia es mi mejor regalo, pero si deseas obsequiarme algo, contaremos con un cofre para sobres en el salón.</p>
+        </div>
+    </section>
+
+    <div class="footer-hero">
+        <div class="glass-panel">
+            <h2 data-aos="fade-up" data-aos-duration="2000">Es un honor contar con su presencia en un día tan especial.</h2>
         </div>
     </div>
-
-    <div class="section-padding">
-        <div class="framed-content" data-aos="zoom-in" style="max-width: 600px;">
-            <h2 class="cursive-title" style="font-size: 3rem;">Lluvia de Sobres</h2>
-            <p style="color: #666; font-size: 0.9rem;">Tu presencia es mi mejor regalo, pero si deseas obsequiarme algo, contaremos con un cofre para sobres en el salón.</p>
-        </div>
-    </div>
-
-    <footer class="footer">
-        <div class="footer-text" data-aos="fade-up">Es un honor contar con su presencia en un día tan especial.</div>
-    </footer>
 
     <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
     <script>
-        AOS.init({ duration: 1000, once: true });
+        AOS.init({ duration: 1200, once: true });
+
         const audio = document.getElementById('bgAudio');
         const musicIcon = document.getElementById('musicIcon');
 
@@ -192,17 +279,29 @@
             }
         }
 
+        // Sistema de pétalos sutil para no recargar el diseño
         function createPetal() {
             const petalsContainer = document.getElementById('petals');
             const p = document.createElement('div');
             p.innerHTML = Math.random() > 0.5 ? "🌸" : "🎀";
-            const duration = Math.random() * 5 + 7;
-            p.style.cssText = `position: fixed; top: -50px; left: ${Math.random() * 100}vw; font-size: ${Math.random() * 15 + 10}px; opacity: 0.5; transition: transform ${duration}s linear, top ${duration}s linear; z-index: 100;`;
+            const duration = Math.random() * 6 + 10; // Más lento y elegante
+            const size = Math.random() * 10 + 12; // Más sutil
+            
+            p.style.cssText = `
+                position: fixed; top: -50px; left: ${Math.random() * 100}vw;
+                font-size: ${size}px; opacity: 0.4; pointer-events: none;
+                transition: transform ${duration}s linear, top ${duration}s linear;
+                z-index: 100;
+            `;
+
             petalsContainer.appendChild(p);
-            setTimeout(() => { p.style.top = '110vh'; p.style.transform = `rotate(${Math.random() * 360}deg) translateX(${Math.random() * 60}px)`; }, 100);
+            setTimeout(() => {
+                p.style.top = '110vh';
+                p.style.transform = `rotate(${Math.random() * 360}deg) translateX(${Math.random() * 50 - 25}px)`;
+            }, 100);
             setTimeout(() => p.remove(), duration * 1000);
         }
-        setInterval(createPetal, 500);
+        setInterval(createPetal, 700); // Menos cantidad cayendo al mismo tiempo
     </script>
 </body>
 </html>
